@@ -66,11 +66,5 @@ class WeatherParser:
         for key, value in data.items():
             text += f"{key}: {value}\n"
         
-        return text.strip()
+        return text
         
-
-if __name__ == "__main__":
-    parser = WeatherParser()
-    print(parser.pretty_output(parser.get_data_coord(latitude=55.7522, longitude=37.6156)))
-    print("\n")
-    print(parser.pretty_output(parser.get_data_city(city_name="Moscow")))
