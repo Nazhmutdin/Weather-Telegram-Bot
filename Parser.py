@@ -8,9 +8,6 @@ class WeatherParser:
 
     def __init__(self):
         self.s = requests.Session()
-        self.proxies = {
-            "http" :f"http://yjympjsk:k8n93vqq56qr@45.170.13.102:8128",
-        }
     
     def get_wind_direction(self, text:dict) -> str:
         deg = text["wind"]["deg"]
@@ -66,5 +63,10 @@ class WeatherParser:
         for key, value in data.items():
             text += f"{key}: {value}\n"
         
-        return text
-        
+        return text.strip()
+
+
+if __name__ == "__main__":
+    parser = WeatherParser()
+    print(parser.pretty_output(parser.get_data_city(city_name="Moscow")))
+    print(parser.s.headers)
